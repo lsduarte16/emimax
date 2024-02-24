@@ -1,0 +1,669 @@
+Fecha de vencimiento: 05-06-2023
+Monto de la deuda: 0
+71076474
+RUT recibido: 71076474
+RUT: 7.107.647-4
+Fecha de vencimiento: 07-03-2024
+Monto de la deuda: 9.990
+129286628
+RUT recibido: 129286628
+RUT: 12.928.662-8
+Fecha de vencimiento: 15-02-2024
+Monto de la deuda: 0
+
+
+71076547
+RUT recibido: 71076547
+RUT: 7.107.654-7
+Fecha de vencimiento: 07-03-2024
+Monto de la deuda: 27.577
+
+71076547
+RUT recibido: 71076547
+RUT: 7.107.654-7
+Fecha de vencimiento: 07-03-2024
+Monto de la deuda: 27.577
+
+71079031
+RUT recibido: 71079031
+RUT: 7.107.903-1
+Fecha de vencimiento: 05-03-2024
+Monto de la deuda: 10.880
+183855026
+RUT recibido: 183855026
+RUT: 18.385.502-6
+Fecha de vencimiento: 21-09-2022
+Monto de la deuda: 0
+124290554
+RUT recibido: 124290554
+RUT: 12.429.055-4
+Fecha de vencimiento: 05-02-2024
+Monto de la deuda: 0
+172609309
+RUT recibido: 172609309
+RUT: 17.260.930-9
+Fecha de vencimiento: 05-03-2024
+Monto de la deuda: 0
+183465449
+RUT recibido: 183465449
+RUT: 18.346.544-9
+Fecha de vencimiento: 05-02-2024
+Monto de la deuda: 0
+16863787K
+RUT recibido: 16863787K
+RUT: 16.863.787-K
+Fecha de vencimiento: 21-02-2024
+Monto de la deuda: 14.099
+87694534
+RUT recibido: 87694534
+RUT: 8.769.453-4
+Fecha de vencimiento: --
+Monto de la deuda: 0
+
+RUT recibido: 8300584K
+RUT: 8.300.584-K
+Fecha de vencimiento: 05-03-2024
+Monto de la deuda: 17.380
+139533143
+RUT recibido: 139533143
+RUT: 13.953.314-3
+Fecha de vencimiento: 05-03-2024
+Monto de la deuda: 9.017
+71081133
+RUT recibido: 71081133
+RUT: 7.108.113-3
+Fecha de vencimiento: 03-01-2024
+Monto de la deuda: 0
+71082741
+RUT recibido: 71082741
+RUT: 7.108.274-1
+Fecha de vencimiento: 05-02-2024
+Monto de la deuda: 0
+157734016
+RUT recibido: 157734016
+RUT: 15.773.401-6
+Fecha de vencimiento: --
+Monto de la deuda: 0
+71083209
+RUT recibido: 71083209
+RUT: 7.108.320-9
+Fecha de vencimiento: 07-03-2024
+Monto de la deuda: 8.990
+71083233
+RUT recibido: 71083233
+RUT: 7.108.323-3
+Fecha de vencimiento: 07-03-2024
+Monto de la deuda: 18.263
+
+123814428
+RUT recibido: 123814428
+RUT: 12.381.442-8
+Fecha de vencimiento: 06-07-2020
+Monto de la deuda: 0
+71084744
+RUT recibido: 71084744
+RUT: 7.108.474-4
+Fecha de vencimiento: --
+Monto de la deuda: 0
+113707143
+RUT recibido: 113707143
+RUT: 11.370.714-3
+Fecha de vencimiento: 05-03-2024
+Monto de la deuda: 12.881
+71085546
+RUT recibido: 71085546
+RUT: 7.108.554-6
+Fecha de vencimiento: 22-08-2022
+Monto de la deuda: 0
+Resultados del test: [
+  {
+    ruttext: '7.050.319-0',
+    fechaVencimiento: '03-04-2023',
+    montoDeuda: '0',
+    resultado: 'resultado del test'
+  },
+  { rut: '12838748K', resultado: 'error' },
+  {
+    ruttext: '14.729.876-5',
+    fechaVencimiento: '05-03-2024',
+    montoDeuda: '21.358',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '7.050.419-7',
+    fechaVencimiento: '07-03-2024',
+    montoDeuda: '6.465',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '9.507.307-7',
+    fechaVencimiento: '05-02-2024',
+    montoDeuda: '0',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '7.050.542-8',
+    fechaVencimiento: '07-03-2024',
+    montoDeuda: '5.439',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '27.139.437-3',
+    fechaVencimiento: '21-02-2024',
+    montoDeuda: '0',
+    resultado: 'resultado del test'
+  },
+  { rut: '254359157', resultado: 'error' },
+  {
+    ruttext: '7.050.599-1',
+    fechaVencimiento: '07-03-2024',
+    montoDeuda: '69.592',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '7.050.867-2',
+    fechaVencimiento: '07-03-2024',
+    montoDeuda: '25.990',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '7.050.883-4',
+    fechaVencimiento: '07-03-2024',
+    montoDeuda: '0',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '7.051.317-K',
+    fechaVencimiento: '07-03-2024',
+    montoDeuda: '20.980',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '15.084.665-K',
+    fechaVencimiento: '21-02-2024',
+    montoDeuda: '16.480',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '7.051.837-6',
+    fechaVencimiento: '05-03-2024',
+    montoDeuda: '10.880',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '27.453.251-3',
+    fechaVencimiento: '06-10-2022',
+    montoDeuda: '0',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '12.038.857-6',
+    fechaVencimiento: '05-03-2024',
+    montoDeuda: '8.680',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '7.051.888-0',
+    fechaVencimiento: '05-03-2024',
+    montoDeuda: '9.990',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '7.051.978-K',
+    fechaVencimiento: '--',
+    montoDeuda: '0',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '17.161.193-8',
+    fechaVencimiento: '05-02-2024',
+    montoDeuda: '0',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '7.051.982-8',
+    fechaVencimiento: '--',
+    montoDeuda: '0',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '7.052.004-4',
+    fechaVencimiento: '05-03-2024',
+    montoDeuda: '25.960',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '7.052.089-3',
+    fechaVencimiento: '05-02-2024',
+    montoDeuda: '0',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '7.052.417-1',
+    fechaVencimiento: '07-03-2024',
+    montoDeuda: '31.870',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '7.052.563-1',
+    fechaVencimiento: '04-12-2023',
+    montoDeuda: '0',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '7.052.563-1',
+    fechaVencimiento: '04-12-2023',
+    montoDeuda: '0',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '7.052.565-8',
+    fechaVencimiento: '--',
+    montoDeuda: '0',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '17.595.652-2',
+    fechaVencimiento: '--',
+    montoDeuda: '0',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '7.052.574-7',
+    fechaVencimiento: '--',
+    montoDeuda: '0',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '9.992.384-9',
+    fechaVencimiento: '04-10-2023',
+    montoDeuda: '15.475',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '7.052.611-5',
+    fechaVencimiento: '--',
+    montoDeuda: '0',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '16.756.346-5',
+    fechaVencimiento: '21-02-2024',
+    montoDeuda: '6.912',
+    resultado: 'resultado del test'
+  },
+  { rut: '70527421', resultado: 'error' },
+  { rut: '158536935', resultado: 'error' },
+  {
+    ruttext: '18.684.380-0',
+    fechaVencimiento: '21-02-2024',
+    montoDeuda: '4.990',
+    resultado: 'resultado del test'
+  },
+  { rut: '70528959', resultado: 'error' },
+  { rut: '70530198', resultado: 'error' },
+  {
+    ruttext: '7.053.136-4',
+    fechaVencimiento: '05-02-2024',
+    montoDeuda: '0',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '7.053.229-8',
+    fechaVencimiento: '07-03-2024',
+    montoDeuda: '15.400',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '7.053.303-0',
+    fechaVencimiento: '--',
+    montoDeuda: '0',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '7.053.504-1',
+    fechaVencimiento: '',
+    montoDeuda: '0',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '11.468.640-9',
+    fechaVencimiento: '06-10-2022',
+    montoDeuda: '0',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '26.511.480-6',
+    fechaVencimiento: '01-02-2023',
+    montoDeuda: '0',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '7.053.522-K',
+    fechaVencimiento: '07-03-2024',
+    montoDeuda: '7.990',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '7.053.692-7',
+    fechaVencimiento: '07-03-2024',
+    montoDeuda: '10.880',
+    resultado: 'resultado del test'
+  },
+  { rut: '264443180', resultado: 'error' },
+  {
+    ruttext: '20.630.685-8',
+    fechaVencimiento: '05-02-2024',
+    montoDeuda: '0',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '20.525.566-4',
+    fechaVencimiento: '04-09-2023',
+    montoDeuda: '0',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '15.135.019-4',
+    fechaVencimiento: '23-05-2022',
+    montoDeuda: '0',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '7.054.888-7',
+    fechaVencimiento: '07-03-2024',
+    montoDeuda: '51.980',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '7.054.895-K',
+    fechaVencimiento: '--',
+    montoDeuda: '0',
+    resultado: 'resultado del test'
+  },
+  { rut: '78603747', resultado: 'error' },
+  {
+    ruttext: '10.751.069-9',
+    fechaVencimiento: '07-03-2024',
+    montoDeuda: '10.260',
+    resultado: 'resultado del test'
+  },
+  { rut: '70552337', resultado: 'error' },
+  { rut: '150733782', resultado: 'error' },
+  {
+    ruttext: '7.055.269-8',
+    fechaVencimiento: '07-03-2024',
+    montoDeuda: '19.990',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '7.055.336-8',
+    fechaVencimiento: '04-12-2023',
+    montoDeuda: '12.184',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '7.055.507-7',
+    fechaVencimiento: '--',
+    montoDeuda: '0',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '7.055.507-7',
+    fechaVencimiento: '--',
+    montoDeuda: '0',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '7.055.751-7',
+    fechaVencimiento: '05-02-2024',
+    montoDeuda: '0',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '7.055.777-0',
+    fechaVencimiento: '--',
+    montoDeuda: '0',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '7.055.781-9',
+    fechaVencimiento: '05-03-2024',
+    montoDeuda: '7.990',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '7.055.892-0',
+    fechaVencimiento: '07-03-2024',
+    montoDeuda: '19.560',
+    resultado: 'resultado del test'
+  },
+  { rut: '70559544', resultado: 'error' },
+  {
+    ruttext: '7.056.132-8',
+    fechaVencimiento: '--',
+    montoDeuda: '0',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '7.056.135-2',
+    fechaVencimiento: '07-03-2024',
+    montoDeuda: '10.880',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '16.103.801-6',
+    fechaVencimiento: '21-12-2022',
+    montoDeuda: '0',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '7.056.143-3',
+    fechaVencimiento: '05-02-2024',
+    montoDeuda: '0',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '26.257.733-3',
+    fechaVencimiento: '07-03-2024',
+    montoDeuda: '0',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '7.056.171-9',
+    fechaVencimiento: '21-02-2024',
+    montoDeuda: '8.680',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '20.997.836-9',
+    fechaVencimiento: '07-03-2024',
+    montoDeuda: '17.490',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '7.056.318-5',
+    fechaVencimiento: '07-03-2024',
+    montoDeuda: '7.490',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '7.056.329-0',
+    fechaVencimiento: '05-03-2024',
+    montoDeuda: '12.029',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '20.269.565-5',
+    fechaVencimiento: '05-08-2022',
+    montoDeuda: '0',
+    resultado: 'resultado del test'
+  },
+  { rut: '110577036', resultado: 'error' },
+  {
+    ruttext: '19.458.847-K',
+    fechaVencimiento: '03-04-2023',
+    montoDeuda: '0',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '14.315.973-6',
+    fechaVencimiento: '05-03-2024',
+    montoDeuda: '10.880',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '7.056.636-2',
+    fechaVencimiento: '05-03-2024',
+    montoDeuda: '7.990',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '24.564.796-4',
+    fechaVencimiento: '07-03-2024',
+    montoDeuda: '12.380',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '7.056.728-8',
+    fechaVencimiento: '07-03-2024',
+    montoDeuda: '14.980',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '12.171.534-1',
+    fechaVencimiento: '05-03-2024',
+    montoDeuda: '0',
+    resultado: 'resultado del test'
+  },
+  { rut: '70569558', resultado: 'error' },
+  {
+    ruttext: '19.937.927-5',
+    fechaVencimiento: '05-02-2024',
+    montoDeuda: '0',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '7.057.115-3',
+    fechaVencimiento: '07-03-2024',
+    montoDeuda: '8.210',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '7.057.388-1',
+    fechaVencimiento: '07-03-2024',
+    montoDeuda: '33.770',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '7.057.434-9',
+    fechaVencimiento: '--',
+    montoDeuda: '0',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '15.085.037-1',
+    fechaVencimiento: '--',
+    montoDeuda: '0',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '26.065.153-6',
+    fechaVencimiento: '15-01-2024',
+    montoDeuda: '0',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '7.057.738-0',
+    fechaVencimiento: '05-03-2024',
+    montoDeuda: '0',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '7.057.742-9',
+    fechaVencimiento: '05-02-2024',
+    montoDeuda: '0',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '7.057.921-9',
+    fechaVencimiento: '--',
+    montoDeuda: '0',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '7.058.204-K',
+    fechaVencimiento: '06-07-2023',
+    montoDeuda: '0',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '20.353.421-3',
+    fechaVencimiento: '05-03-2024',
+    montoDeuda: '9.233',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '12.342.418-2',
+    fechaVencimiento: '05-03-2024',
+    montoDeuda: '0',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '7.058.644-4',
+    fechaVencimiento: '01-02-2023',
+    montoDeuda: '0',
+    resultado: 'resultado del test'
+  },
+  { rut: '70587696', resultado: 'error' },
+  {
+    ruttext: '7.059.117-0',
+    fechaVencimiento: '--',
+    montoDeuda: '0',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '7.059.190-1',
+    fechaVencimiento: '--',
+    montoDeuda: '0',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '20.477.582-6',
+    fechaVencimiento: '02-12-2022',
+    montoDeuda: '0',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '7.059.390-4',
+    fechaVencimiento: '07-03-2024',
+    montoDeuda: '0',
+    resultado: 'resultado del test'
+  },
+  {
+    ruttext: '7.059.776-4',
+    fechaVencimiento: '--',
+    montoDeuda: '0',
+    resultado: 'resultado del test'
+  },
+  ... 901 more items
+],
+RUT recibido: {
+  ruttext: '7.050.319-0',
+  fechaVencimiento: '03-04-2023',
+  montoDeuda: '0',
+  resultado: 'resultado del test'
+},
+RUT recibido: { rut: '12838748K', resultado: 'error' }
+RUT recibido: {
+  ruttext: '14.729.876-5',
+  fechaVencimiento: '05-03-2024',
+  montoDeuda: '21.358',
+  resultado: 'resultado del test'
+},
+Error al ejecutar el test para el RUT {
+  ruttext: '14.729.876-5',
+  fechaVencimiento: '05-03-2024',
+  montoDeuda: '21.358',
+  resultado: 'resultado del test'
+}

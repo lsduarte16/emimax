@@ -1,0 +1,23 @@
+{
+  "rut": {
+    "ruttext": "7.050.319-0",
+    "fechaVencimiento": "03-04-2023",
+    "montoDeuda": "0",
+    "resultado": "resultado del test"
+  },
+  "resultado": "error"
+}{
+  "rut": {
+    "rut": "12838748K",
+    "resultado": "error"
+  },
+  "resultado": "error"
+}{
+  "rut": {
+    "ruttext": "14.729.876-5",
+    "fechaVencimiento": "05-03-2024",
+    "montoDeuda": "21.358",
+    "resultado": "resultado del test"
+  },
+  "resultado": "error"
+}
