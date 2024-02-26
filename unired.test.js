@@ -68,7 +68,7 @@ async function ejecutarTestParaRut(rut) {
     await driver.findElement(By.css(".wrap-form-row > button")).click()
 
     // Esperar 10 segundos para que se carguen los resultados
-    await driver.sleep(5000)
+    await driver.sleep(8000)
 
     // Localizar los elementos que contienen el RUT, la fecha de vencimiento y el monto de la deuda
     const rutElement = await driver.findElement(By.css(".empresa-info > span:nth-child(2)"));
@@ -83,6 +83,24 @@ async function ejecutarTestParaRut(rut) {
     let rutformat = parseInt(ruttext.replace(/\./g, '').replace('-', ''));
     let montoDeudaNumber = parseFloat(montoDeuda.replace(/\./g, '').replace(',', '.'));
 
+    // Si el monto de la deuda es cero, buscar elementos <span> con la clase "slider" y hacer clic en cada uno
+    if (montoDeudaNumber === 0) {
+      await driver.findElement(By.css(".deudas:nth-child(1) .slider")).click()
+      await driver.findElement(By.css(".deudas:nth-child(2) .slider")).click()
+      
+      // Esperar un momento después de hacer clic en los elementos slider
+      await driver.sleep(5000);
+
+       // Volver a obtener el elemento del monto de la deuda y su texto actualizado
+       const updatedMontoDeudaElement = await driver.findElement(By.css(".precio-desktop"));
+       const updatedMontoDeuda = await updatedMontoDeudaElement.getText();
+       montoDeudaNumber = parseFloat(updatedMontoDeuda.replace(/\./g, '').replace(',', '.'));
+
+    }
+ 
+    // Obtener la fecha y hora actual
+    const fechaHoraActual = new Date();
+
     // Imprimir el RUT, la fecha de vencimiento y el monto de la deuda
     console.log("RUT:", rutformat);
     console.log("Fecha de vencimiento:", fechaVencimiento);
@@ -90,7 +108,7 @@ async function ejecutarTestParaRut(rut) {
 
     // Aquí puedes agregar más acciones si es necesario después de que se carguen los resultados
 
-    return { rutformat, fechaVencimiento, montoDeudaNumber, resultado: 'resultado del test' }; // Puedes modificar el formato del resultado según tus necesidades
+    return { rutformat, fechaVencimiento, montoDeudaNumber, fecreg: fechaHoraActual  ,resultado: 'registro ok' }; // Puedes modificar el formato del resultado según tus necesidades
   } catch (error) {
       console.error('Error al ejecutar el test para el RUT', rut, ':', error);
       return { rut, resultado: 'error' };
