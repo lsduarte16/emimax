@@ -3,19 +3,19 @@ const fs = require('fs');
 
 async function getData() {
   try {
-    const response = await axios.post('https://sa-east-1.aws.data.mongodb-api.com/app/emimax-khgfo/endpoint/zero');
+    const response = await axios.post('https://sa-east-1.aws.data.mongodb-api.com/app/emimax-khgfo/endpoint/errors');
     const data = response.data;
 
     // Extraer y almacenar todos los valores únicos de rutformat en un conjunto
-    const rutformatSet = new Set();
+    const rutSet = new Set();
     data.forEach(item => {
       // Verificar si rutformat es una cadena de texto antes de usar replace()
-      const rutformat = typeof item.rutformat === 'string' ? item.rutformat.replace(/\./g, '') : item.rutformat;
-      rutformatSet.add(rutformat);
+      const rut = typeof item.rutformat === 'string' ? item.rut.replace(/\./g, '') : item.rut;
+      rutSet.add(rut);
     });
 
     // Convertir el conjunto a un array
-    const rutformatArray = Array.from(rutformatSet);
+    const rutformatArray = Array.from(rutSet);
 
     // Escribir los datos en un archivo JSON
     fs.writeFileSync('reproces.json', JSON.stringify(rutformatArray, null, 2));

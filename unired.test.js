@@ -3,43 +3,32 @@ const axios = require('axios');
 const { Builder, By } = require('selenium-webdriver');
 const fs = require('fs');
 
-// Función para leer el archivo JSON de forma asíncrona
-async function leerRuts() {
-  return new Promise((resolve, reject) => {
-    fs.readFile('ruts.json', (err, data) => {
-      if (err) {
-        console.error('Error al leer el archivo JSON:', err);
-        reject(err);
-        return;
-      }
-      try {
-        const ruts = JSON.parse(data).rut; // Extrae solo el array de RUTs
-        //console.log('Datos leídos del archivo JSON:', ruts);
-        resolve(ruts);
-      } catch (error) {
-        console.error('Error al parsear el JSON:', error);
-        reject(error);
-      }
+
+//funcion para leer rut de la api
+async function obtenerRutDesdeAPI() {
+  try {
+    const response = await axios.post('https://sa-east-1.aws.data.mongodb-api.com/app/emimax-khgfo/endpoint/ruts4ruts');
+    const datos = response.data.map(rut => {
+      return {
+        rut: rut.RUT,
+        nombre: rut.NOMBRE_COMPLETO,
+        scrMovil: rut.SCR_MOVIL,
+        comuna: rut.COMUNA,
+        region: rut.Region,
+        compañia: rut.Compañía
+      };
     });
-  });
-}
-
-async function ejecutarTest(ruts) {
-  //console.log('Tipo de datos de ruts:', typeof ruts);
-  let resultados = [];
-
-  for (let rut of ruts) {
-    //console.log(rut)
-    let result = await ejecutarTestParaRut(rut);
-    resultados.push(result);
-    await guardarResultado(result);
+    console.log('DATOS obtenido de la API:', datos);
+    return datos;
+  } catch (error) {
+    console.error('Error al obtener el RUT desde la API:', error);
+    throw error;
   }
-
-  return resultados;
 }
 
 // Función para ejecutar el test para un RUT específico
-async function ejecutarTestParaRut(rut) {
+async function ejecutarTestParaRut(detalle) {
+  const { rut, nombre, scrMovil, comuna, region, compañia} = detalle;
   let driver = await new Builder().forBrowser('chrome').build();
 
   try {
@@ -60,6 +49,7 @@ async function ejecutarTestParaRut(rut) {
       const element = await driver.findElement(By.css(".contenedor-buscador"))
       await driver.actions({ bridge: true }).move({ origin: element }).perform()
     }
+    await driver.sleep(4000)
     await driver.findElement(By.id("ValorIdentificador")).click()
     await driver.findElement(By.id("ValorIdentificador")).click()
 
@@ -68,7 +58,7 @@ async function ejecutarTestParaRut(rut) {
     await driver.findElement(By.css(".wrap-form-row > button")).click()
 
     // Esperar 10 segundos para que se carguen los resultados
-    await driver.sleep(8000)
+    await driver.sleep(4000)
 
     // Localizar los elementos que contienen el RUT, la fecha de vencimiento y el monto de la deuda
     const rutElement = await driver.findElement(By.css(".empresa-info > span:nth-child(2)"));
@@ -79,39 +69,61 @@ async function ejecutarTestParaRut(rut) {
     const ruttext = await rutElement.getText();
     const fechaVencimiento = await fechaVencimientoElement.getText();
     const montoDeuda = await montoDeudaElement.getText();
+
+// Suponiendo que la fecha de vencimiento está en formato "DD-MM-YYYY"
+    const fechaVencimientoParts = fechaVencimiento.split('-');
+    const fechaVencimientoDate = new Date(fechaVencimientoParts[2], fechaVencimientoParts[1] - 1, fechaVencimientoParts[0]);
+    
     // Quitamos puntos
     let rutformat = parseInt(ruttext.replace(/\./g, '').replace('-', ''));
     let montoDeudaNumber = parseFloat(montoDeuda.replace(/\./g, '').replace(',', '.'));
 
-    // Si el monto de la deuda es cero, buscar elementos <span> con la clase "slider" y hacer clic en cada uno
+    // Si el monto de la deuda es cero y los elementos slider no están presentes, guardar '--' en monto y fecha
     if (montoDeudaNumber === 0) {
-      await driver.findElement(By.css(".deudas:nth-child(1) .slider")).click()
-      await driver.findElement(By.css(".deudas:nth-child(2) .slider")).click()
-      
+      const sliderElement1 = await driver.findElements(By.css(".deudas:nth-child(1) .slider"));
+      const sliderElement2 = await driver.findElements(By.css(".deudas:nth-child(2) .slider"));
+    
+      // Verificar si los elementos slider están presentes
+      if (sliderElement1.length === 0 || sliderElement2.length === 0) {
+        console.log("no se registra deuda");
+        return { rut, nombre, scrMovil, comuna, region, compañia, fechaVencimiento: '--', montoDeuda: '--', fecreg: new Date(), resultado: 'No registra deuda' };
+      }
+    
+      // Hacer clic en los elementos slider si están presentes
+      await sliderElement1[0].click();
+      await sliderElement2[0].click();
+    
       // Esperar un momento después de hacer clic en los elementos slider
       await driver.sleep(5000);
-
-       // Volver a obtener el elemento del monto de la deuda y su texto actualizado
-       const updatedMontoDeudaElement = await driver.findElement(By.css(".precio-desktop"));
-       const updatedMontoDeuda = await updatedMontoDeudaElement.getText();
-       montoDeudaNumber = parseFloat(updatedMontoDeuda.replace(/\./g, '').replace(',', '.'));
-
+    
+      // Volver a obtener el elemento del monto de la deuda y su texto actualizado
+      const updatedMontoDeudaElement = await driver.findElement(By.css(".precio-desktop"));
+      const updatedMontoDeuda = await updatedMontoDeudaElement.getText();
+      montoDeudaNumber = parseFloat(updatedMontoDeuda.replace(/\./g, '').replace(',', '.'));
     }
  
-    // Obtener la fecha y hora actual
+    // Obtener la fecha y hora actual y establecer la hora, los minutos, los segundos y los milisegundos en cero
     const fechaHoraActual = new Date();
+    fechaHoraActual.setHours(0, 0, 0, 0);
 
-    // Imprimir el RUT, la fecha de vencimiento y el monto de la deuda
-    console.log("RUT:", rutformat);
-    console.log("Fecha de vencimiento:", fechaVencimiento);
-    console.log("Monto deuda:", montoDeudaNumber);
+    // Convertir la fecha de vencimiento a objeto Date y establecer la hora, los minutos, los segundos y los milisegundos en cero
+    fechaVencimientoDate.setHours(0, 0, 0, 0);
+
+
+    // Determinar si la deuda está vigente o vencida
+    let resultadoDeuda = '';
+    if (fechaVencimientoDate > fechaHoraActual) {
+      resultadoDeuda = 'deuda vigente';
+    } else {
+      resultadoDeuda = 'deuda vencida';
+    }
 
     // Aquí puedes agregar más acciones si es necesario después de que se carguen los resultados
 
-    return { rutformat, fechaVencimiento, montoDeudaNumber, fecreg: fechaHoraActual  ,resultado: 'registro ok' }; // Puedes modificar el formato del resultado según tus necesidades
+    return { rut, nombre, scrMovil, comuna, region, compañia, fechaVencimiento: fechaVencimientoDate, montoDeuda: montoDeudaNumber, fecreg: fechaHoraActual, resultado: resultadoDeuda }; // Modifica esto para incluir la fecha de vencimiento y el monto obtenido
   } catch (error) {
       console.error('Error al ejecutar el test para el RUT', rut, ':', error);
-      return { rut, resultado: 'error' };
+      return { rut, nombre, resultado: 'error' };
   } finally {
       await driver.quit();
   }
@@ -130,10 +142,16 @@ async function guardarResultado(resultado) {
 // Función principal para ejecutar el programa
 async function main() {
   try {
-    const ruts = await leerRuts();
-    //console.log('Datos leídos:', ruts);
-    const resultados = await ejecutarTest(ruts);
-    console.log('Resultados del test:', resultados);
+    while (true) {
+      const detallesRut = await obtenerRutDesdeAPI(); // Obtener los detalles de los RUTs desde la API
+      for (const detalle of detallesRut) {
+        const resultado = await ejecutarTestParaRut(detalle); // Pasar el detalle del RUT
+        console.log('Resultado del test:', resultado);
+        await guardarResultado(resultado);
+      }
+      // Esperar un período de tiempo antes de volver a ejecutar el bucle
+      //await new Promise(resolve => setTimeout(resolve, 10000)); // Esperar 1 minuto
+    }
   } catch (error) {
     console.error('Error en el programa:', error);
   }

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla de Deudas</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+<!-- Agrega moment para manejar fechas -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdn.datatables.net/plug-ins/1.11.5/sorting/datetime-moment.js"></script>
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2 class="mb-4">Tabla de Deudas</h2>
+    <table id="deudasTable" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>RUT</th>
+                <th>Monto</th>
+                <th>Fecha de Vencimiento</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <button id="downloadCSV" class="btn btn-primary mb-3">Descargar CSV</button>
+    <br></br>
+    <a href="grafico.html" target="_blank">Ver gráfico de deudas</a>
+</div>
+
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- DataTables JS -->
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
+
+<script>
+$(document).ready(function() {
+    console.log("Documento cargado.");
+
+    // Array para almacenar todos los datos obtenidos de la API
+    var allData = [];
+
+    function isFechaVencida(fechaVencimiento) {
+    // Obtener la fecha actual
+    var fechaActual = new Date();
+    // Separar el día, mes y año de la fecha de vencimiento
+    var partesFecha = fechaVencimiento.split('-');
+    var diaVencimiento = parseInt(partesFecha[0], 10);
+    var mesVencimiento = parseInt(partesFecha[1], 10) - 1; // Los meses en JavaScript van de 0 a 11
+    var añoVencimiento = parseInt(partesFecha[2], 10);
+    // Crear un objeto de fecha con la fecha de vencimiento
+    var fechaVencimientoObj = new Date(añoVencimiento, mesVencimiento, diaVencimiento);
+    // Comparar la fecha de vencimiento con la fecha actual
+    return fechaVencimientoObj < fechaActual;
+}
+
+    // Realizar la solicitud POST a la API
+    $.ajax({
+        url: "https://sa-east-1.aws.data.mongodb-api.com/app/emimax-khgfo/endpoint/success",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({}),
+        success: function(data) {
+            console.log("Datos obtenidos con éxito:", data);
+            
+            // Guardar todos los datos en el arreglo allData
+            allData = data;
+
+            // Limpiar el cuerpo de la tabla
+            $('#deudasTable tbody').empty();
+            
+            // Agregar datos a la tabla
+            $.each(data, function(index, item) {
+                var rowNumber = index + 1;
+                var fechaVencimiento = item.fechaVencimiento;
+                var estadoDeuda = isFechaVencida(fechaVencimiento) ? 'Vencida' : 'Vigente';
+                var color = isFechaVencida(fechaVencimiento) ? 'red' : 'green';
+                var circle = '<div style="width: 10px; height: 10px; border-radius: 50%; background-color: ' + color + '; display: inline-block;"></div>';
+                $('#deudasTable tbody').append('<tr><td>' + rowNumber + '</td><td>' + item.rutformat + '</td><td>' + item.montoDeudaNumber + '</td><td>' + fechaVencimiento + ' ' + circle  + '</td></tr>');
+            });
+
+            // Inicializar DataTables y habilitar ordenamiento
+            $('#deudasTable').DataTable();
+            $.fn.dataTable.moment('DD-MM-YYYY');
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.error("Error al obtener datos:", textStatus, "-", errorThrown);
+        }
+    });
+
+    // Evento clic para el botón de descarga CSV
+    $('#downloadCSV').click(function() {
+        // Convertir todos los datos a formato CSV
+        var csv = [];
+        // Agregar encabezados de columna
+        csv.push('RUT,Monto,Fecha de Vencimiento');
+        // Recorrer todos los datos y agregarlos al CSV
+        $.each(allData, function(index, item) {
+            csv.push(item.rutformat + ',' + item.montoDeudaNumber + ',' + item.fechaVencimiento);
+        });
+        // Crear contenido CSV
+        var csvContent = 'data:text/csv;charset=utf-8,' + csv.join('\n');
+        // Crear un enlace oculto para descargar el archivo CSV
+        var encodedUri = encodeURI(csvContent);
+        var link = document.createElement('a');
+        link.setAttribute('href', encodedUri);
+        link.setAttribute('download', 'datos.csv');
+        document.body.appendChild(link);
+        // Simular clic en el enlace para iniciar la descarga
+        link.click();
+        // Limpiar el enlace después de la descarga
+        document.body.removeChild(link);
+    });
+});
+
+</script>
+
+</body>
+</html>

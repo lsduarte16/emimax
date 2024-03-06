@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráfico de Deudas</title>
+    <!-- Agrega la biblioteca Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Agrega jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+<body>
+    <h1>Gráfico de Deudas</h1>
+    <!-- Agrega un canvas para el gráfico -->
+    <canvas id="chart" width="800" height="400"></canvas>
+
+    <script>
+        // Obtén los datos y crea el gráfico
+        $.ajax({
+            url: "https://sa-east-1.aws.data.mongodb-api.com/app/emimax-khgfo/endpoint/success",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({}),
+            success: function(data) {
+                console.log("Datos obtenidos con éxito:", data);
+
+                // Ordena los datos por fecha de vencimiento de manera ascendente
+                data.sort(function(a, b) {
+                    return new Date(a.fechaVencimiento) - new Date(b.fechaVencimiento);
+                });
+
+                // Procesa los datos para obtener la cantidad de clientes con deudas a vencer por día
+                var countByDate = {};
+                data.forEach(function(item) {
+                    var fechaVencimiento = item.fechaVencimiento;
+                    var fecha = fechaVencimiento.split('-').reverse().join('-'); // Cambia el formato de la fecha
+                    if (countByDate[fecha] === undefined) {
+                        countByDate[fecha] = 1;
+                    } else {
+                        countByDate[fecha]++;
+                    }
+                });
+
+                // Obtiene las etiquetas y los datos para el gráfico
+                var labels = Object.keys(countByDate);
+                var dataValues = Object.values(countByDate);
+
+                // Crea el gráfico
+                var ctx = document.getElementById('chart').getContext('2d');
+                var myChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Cantidad de clientes con deudas a vencer por día',
+                            data: dataValues,
+                            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.error("Error al obtener datos:", textStatus, "-", errorThrown);
+            }
+        });
+    </script>
+</body>
+</html>
